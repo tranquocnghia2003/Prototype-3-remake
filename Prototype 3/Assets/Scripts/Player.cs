@@ -17,9 +17,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
         {
             Jumping();
+            isOnGround = false;
         }
     }
     private void Jumping()
@@ -28,4 +29,13 @@ public class Player : MonoBehaviour
             playerrb.AddForce(Vector3.up*jumpForce,ForceMode.Impulse);
         
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }  
+    }
+
+
 }
