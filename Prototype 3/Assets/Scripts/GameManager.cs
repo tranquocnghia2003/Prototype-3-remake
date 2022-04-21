@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private Vector3 spawnPos;
     public bool gameIsActive;
+    private ObstacleGeneral obstaclePos;
     public List<GameObject> spawnObjectsPrefabs;
     
     // Start is called before the first frame update
     void Start()
     {
-       
+        
+        obstaclePos = GameObject.Find("Obstacle").GetComponent<ObstacleGeneral>();
         StartCoroutine("SpawnObject");
         
     }
@@ -27,7 +30,15 @@ public class GameManager : MonoBehaviour
     }
     private void SpawnManager()
     {
-        Vector3 SpawnPos = new Vector3(30, 0f, 0f); 
-        Instantiate(spawnObjectsPrefabs[Random.Range(0, spawnObjectsPrefabs.Count)], SpawnPos, Quaternion.Euler(Vector3.zero));
+        int index = Random.Range(0, spawnObjectsPrefabs.Count);
+        if(index == 1)
+        {
+            spawnPos = new Vector3(30f, 1.5f, 0f);
+        }
+        else
+        {
+            spawnPos = new Vector3(30f, 0f, 0f);
+        }
+        Instantiate(spawnObjectsPrefabs[index], spawnPos, Quaternion.Euler(Vector3.zero));
     }
 }

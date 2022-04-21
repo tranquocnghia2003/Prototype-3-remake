@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObstacleGeneral : MonoBehaviour
 {
+    
     private float boundary = -10f;
     [SerializeField] float speed;
     // Start is called before the first frame update
@@ -25,8 +26,9 @@ public class ObstacleGeneral : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public virtual void MoveLeft()
+    public  void MoveLeft()
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime);
     }
+ 
 }
