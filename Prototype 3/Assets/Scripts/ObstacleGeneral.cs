@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObstacleGeneral : MonoBehaviour
 {
     private GameManager gameManager;
-    private float boundary = -10f;
+    private float boundary = -3f;
     [SerializeField] float speed;
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class ObstacleGeneral : MonoBehaviour
     }
     private void DestroyOutOfBound()
     {
-        if(transform.position.x < boundary)
+        if(transform.position.y < boundary)
         {
             Destroy(gameObject);
         }

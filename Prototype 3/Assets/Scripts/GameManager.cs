@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            spawnPos = new Vector3(30f, -0.2f, 0f);
+            spawnPos = new Vector3(30f, 0.2f, 0f);
         }
         Instantiate(spawnObjectsPrefabs[index], spawnPos, Quaternion.Euler(Vector3.zero));
     }

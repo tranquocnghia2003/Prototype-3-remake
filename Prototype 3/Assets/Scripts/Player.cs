@@ -9,9 +9,12 @@ public class Player : MonoBehaviour
     [SerializeField] bool isOnGround = true;
     [SerializeField] bool isDead = false;
     private GameManager gameManager;
+    private Animator playerAnim;
+     
     // Start is called before the first frame update
     void Start()
     {
+        playerAnim = GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerrb = GetComponent<Rigidbody>();
     }
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !isDead)
         {
             Jumping();
+            playerAnim.SetTrigger("Jump_trig");
             isOnGround = false;
         }
     }
@@ -36,16 +40,16 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
-        }  
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Obstacle"))
+        }
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
             gameManager.GameOver();
             isDead = true;
+            playerAnim.SetBool("Death_b", true);
         }
     }
+   
+    
 
 
 }
