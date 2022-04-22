@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class ObstacleGeneral : MonoBehaviour
 {
-    
+    private GameManager gameManager;
     private float boundary = -10f;
     [SerializeField] float speed;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(gameManager.gameOver == false)
+        {
+            MoveLeft();
+        }
+        
         DestroyOutOfBound();
-        MoveLeft();
+        
     }
     private void DestroyOutOfBound()
     {

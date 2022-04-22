@@ -581,7 +581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee4d97fc5fd39843814833669b5b67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameIsActive: 0
+  gameOver: 0
   spawnObjectsPrefabs:
   - {fileID: 20256539362538263, guid: 1bf848122d72bb2429844016fe97b3e9, type: 3}
   - {fileID: 5461449885754937004, guid: 6e4e54c789b9bd1449cf2a06c9188040, type: 3}
@@ -783,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 899489307368505698, guid: 234289f04d63c584ab67c31a98382a1a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.933142
+      value: -7.06
       objectReference: {fileID: 0}
     - target: {fileID: 899489307368505698, guid: 234289f04d63c584ab67c31a98382a1a, type: 3}
       propertyPath: m_LocalPosition.z

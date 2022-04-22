@@ -8,16 +8,18 @@ public class Player : MonoBehaviour
     private Rigidbody playerrb;
     [SerializeField] bool isOnGround = true;
     [SerializeField] bool isDead = false;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerrb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !isDead)
         {
             Jumping();
             isOnGround = false;
@@ -35,6 +37,14 @@ public class Player : MonoBehaviour
         {
             isOnGround = true;
         }  
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Obstacle"))
+        {
+            gameManager.GameOver();
+            isDead = true;
+        }
     }
 
 
