@@ -7,12 +7,13 @@ public class GameManager : MonoBehaviour
     private Vector3 spawnPos;
     public bool gameOver;
     public List<GameObject> spawnObjectsPrefabs;
+    private AudioSource startAudio;
     
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+
+        startAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
         StartCoroutine("SpawnObject");
         
     }
@@ -47,5 +48,6 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOver = true;
+        startAudio.Pause();
     }
 }
