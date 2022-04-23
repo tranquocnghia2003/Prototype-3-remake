@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> spawnObjectsPrefabs;
     private AudioSource startAudio;
     
+    
     // Start is called before the first frame update
     void Start()
     {

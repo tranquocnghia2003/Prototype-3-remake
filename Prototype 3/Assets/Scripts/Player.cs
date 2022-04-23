@@ -10,10 +10,16 @@ public class Player : MonoBehaviour
     [SerializeField] bool isDead = false;
     private GameManager gameManager;
     private Animator playerAnim;
-     
+    public AudioSource audioSource;
+    public AudioClip jumpSound;
+    public AudioClip crashSound;
+    public ParticleSystem Explosion;
+    public ParticleSystem dirtSpash;
+
     // Start is called before the first frame update
     void Start()
     {
+        dirtSpash.Play();
         playerAnim = GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerrb = GetComponent<Rigidbody>();
@@ -32,13 +38,16 @@ public class Player : MonoBehaviour
     private void Jumping()
     {
         
-            playerrb.AddForce(Vector3.up*jumpForce,ForceMode.Impulse);
+        playerrb.AddForce(Vector3.up*jumpForce,ForceMode.Impulse);
+        audioSource.PlayOneShot(jumpSound);
+        dirtSpash.Stop();
         
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            dirtSpash.Play();
             isOnGround = true;
         }
         if (collision.gameObject.CompareTag("Obstacle"))
@@ -46,6 +55,9 @@ public class Player : MonoBehaviour
             gameManager.GameOver();
             isDead = true;
             playerAnim.SetBool("Death_b", true);
+            audioSource.PlayOneShot(crashSound);
+            Explosion.Play();
+            dirtSpash.Stop();
         }
     }
    
