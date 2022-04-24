@@ -5,7 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]private float jumpForce = 30f;
-    private Rigidbody playerrb;
+    public int extraJump = 2;
+    [SerializeField] LayerMask groundLayer;
+     private Rigidbody playerrb;
     [SerializeField] bool isOnGround = true;
     [SerializeField] bool isDead = false;
     private GameManager gameManager;
@@ -16,6 +18,8 @@ public class Player : MonoBehaviour
     public ParticleSystem Explosion;
     public ParticleSystem dirtSpash;
 
+    int jumpCount = 0;
+    float jumpCoolDown;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,28 +35,38 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !isDead)
+        if (Input.GetKeyDown(KeyCode.Space) && !isDead)
         {
             Jumping();
             playerAnim.SetTrigger("Jump_trig");
             isOnGround = false;
+            
         }
+
+        CheckDoubleJump();
+
     }
+
     private void Jumping()
     {
-        
-        playerrb.AddForce(Vector3.up*jumpForce,ForceMode.Impulse);
-        audioSource.PlayOneShot(jumpSound);
-        dirtSpash.Stop();
+        if ( isOnGround || jumpCount < extraJump) {
+            playerrb.AddForce(Vector3.up * jumpForce,ForceMode.Impulse);
+            audioSource.PlayOneShot(jumpSound);
+            dirtSpash.Stop();
+            jumpCount++;
+        }
         
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            jumpCount = 0;
+            jumpCoolDown = Time.time + 0.2f;
             dirtSpash.Play();
             isOnGround = true;
         }
+       
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             gameManager.GameOver();
@@ -62,9 +76,21 @@ public class Player : MonoBehaviour
             Explosion.Play();
             dirtSpash.Stop();
         }
+      }
+    void CheckDoubleJump()
+    {
+        if (Time.time < jumpCoolDown)
+        {
+            isOnGround = true;
+        }
+        else
+        {
+            isOnGround = false;
+        }
     }
-   
-    
+
+
+
 
 
 }
