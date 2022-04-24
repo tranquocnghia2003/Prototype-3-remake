@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,12 +9,12 @@ public class GameManager : MonoBehaviour
     public bool gameOver;
     public List<GameObject> spawnObjectsPrefabs;
     private AudioSource startAudio;
-    
+    public GameObject gameOverMenu;
     
     // Start is called before the first frame update
     void Start()
     {
-
+        gameOverMenu.SetActive(false);
         startAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
         StartCoroutine("SpawnObject");
         
@@ -50,5 +51,14 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         startAudio.Pause();
+        gameOverMenu.SetActive(true);
+    }
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }

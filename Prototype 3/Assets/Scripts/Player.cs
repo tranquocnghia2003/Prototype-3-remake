@@ -19,7 +19,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dirtSpash.Play();
+        if (!isDead)
+        {
+            dirtSpash.Play();
+        }
         playerAnim = GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerrb = GetComponent<Rigidbody>();
