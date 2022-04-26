@@ -3,10 +3,12 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - BackgroundMovement
     - GameManager
+    - HighScoreText
     - MenuUIHandler
     - ObstacleGeneral
     - PauseMenu
     - Player
+    - StoreHighScore
     Unity.CollabProxy.Editor.dll:
     - Unity.Cloud.Collaborate.UserInterface.CollaborateWindow
     Unity.Rider.Editor.dll:
@@ -17,12 +19,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -76,15 +72,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2478}
     - Class: 114
-      Script: {instanceID: 2604}
+      Script: {instanceID: 2606}
     - Class: 114
-      Script: {instanceID: 2788}
+      Script: {instanceID: 2790}
     - Class: 114
-      Script: {instanceID: 2874}
+      Script: {instanceID: 2876}
     - Class: 114
-      Script: {instanceID: 3816}
+      Script: {instanceID: 3820}
     - Class: 114
-      Script: {instanceID: 4078}
+      Script: {instanceID: 4082}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -161,17 +157,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2478}
     - Class: 114
-      Script: {instanceID: 2586}
+      Script: {instanceID: 2492}
     - Class: 114
-      Script: {instanceID: 2604}
+      Script: {instanceID: 2588}
     - Class: 114
-      Script: {instanceID: 2788}
+      Script: {instanceID: 2606}
     - Class: 114
-      Script: {instanceID: 2874}
+      Script: {instanceID: 2790}
     - Class: 114
-      Script: {instanceID: 3692}
+      Script: {instanceID: 2876}
     - Class: 114
-      Script: {instanceID: 17074}
+      Script: {instanceID: 3688}
+    - Class: 114
+      Script: {instanceID: 3696}
+    - Class: 114
+      Script: {instanceID: 17154}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -265,7 +265,7 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 23cb2e43593f9edcffa3ae6dc94a79f7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MenuUIHandler
@@ -353,6 +353,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshProUGUI
+  - hash:
+      serializedVersion: 2
+      Hash: 9f65da0b7eba356ad64464a19ecf7e0e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HighScoreText
   - hash:
       serializedVersion: 2
       Hash: afc5b93a7b192de2dcb3832fe35a5c7e
@@ -559,7 +565,13 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
-      Hash: 3824007dd88fad3ac7d5734a479880df
+      Hash: 930b2a7c015542327cee6af349728cdd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PauseMenu
+  - hash:
+      serializedVersion: 2
+      Hash: 4d8f2812ac2361ec441171c7f4901447
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -649,10 +661,10 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 930b2a7c015542327cee6af349728cdd
+      Hash: 7a6de6da9d56fc6b9266c2ca7525aab8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PauseMenu
+    className: StoreHighScore
   platform: 19
   scenePathNames:
   - Assets/Scenes/Menu.unity

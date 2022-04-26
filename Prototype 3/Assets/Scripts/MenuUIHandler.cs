@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -9,11 +10,11 @@ using UnityEditor;
 
 public class MenuUIHandler : MonoBehaviour
 {
-    
+    public TextMeshProUGUI highscoreText;
     // Start is called before the first frame update
     void Start()
     {
-        
+        highscoreText.text = StoreHighScore.Instance.highScore.text;
     }
 
     // Update is called once per frame

@@ -26,6 +26,7 @@ public class HighScoreText : MonoBehaviour
             score += Time.deltaTime;
         }
         GetHighestScore();
+        StoreHighScore.Instance.highScore.text = highScoreText.text;
         
     }
     public void GetHighestScore()
