@@ -6,8 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
-    private float score;
+    
     private Vector3 spawnPos;
     public bool gameOver;
     public List<GameObject> spawnObjectsPrefabs;
@@ -17,7 +16,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
+        
         gameOverMenu.SetActive(false);
         startAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
         StartCoroutine("SpawnObject");
@@ -37,8 +36,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
-        score += Time.deltaTime;
-        scoreText.text ="Score: "+ Mathf.FloorToInt(score);
+        
     }
     private void SpawnManager()
     {
